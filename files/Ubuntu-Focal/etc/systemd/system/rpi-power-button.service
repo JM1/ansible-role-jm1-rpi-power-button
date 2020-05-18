@@ -1,0 +1,10 @@
+# (2020) Jakob Meng
+[Unit]
+Description=Listen to Power Button for Raspberry Pi
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/rpi-power-button.py
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,42 @@
+---
+- name: Set apt_packages variable to default value
+  set_fact:
+    apt_packages: "{{ __apt_packages|list }}"
+  when: apt_packages|default(None) == None
+
+- name: Install package dependencies
+  include_role:
+    name: jm1.virtual_pkg
+  vars:
+    package_name: "jm1-rpi-power-button"
+    package_depends: "{{ apt_packages }}"
+
+- name: Copy power button script
+  copy:
+    src: "{{ distribution_codename }}/usr/local/bin/rpi-power-button.py"
+    dest: /usr/local/bin/rpi-power-button.py
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+
+- name: Copy power button service
+  copy:
+    src: "{{ distribution_codename }}/etc/systemd/system/rpi-power-button.service"
+    dest: /etc/systemd/system/rpi-power-button.service
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  register: copy_result
+
+- name: Enable and start power button service and ensure it is not masked
+  systemd:
+    name: rpi-power-button.service
+    daemon_reload: yes
+    enabled: yes
+    masked: no
+    state: restarted
+  when: copy_result.changed == True
+
+- name: Cleanup role variables
+  set_fact:
+    apt_packages: !!null

@@ -1,0 +1,4 @@
+---
+__apt_packages:
+- python3
+- python3-rpi.gpio
