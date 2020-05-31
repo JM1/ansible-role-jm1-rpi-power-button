@@ -23,6 +23,14 @@ Download and flash an OS image to a (micro) SD card,
 e.g. use the [guide on ubuntu wiki](https://wiki.ubuntu.com/ARM/RaspberryPi) to setup your Raspberry Pi with
 [`Ubuntu 20.04 LTS` (`arm64`) for Raspberry Pi 2B and later](http://cdimage.ubuntu.com/releases/20.04/release/).
 
+**NOTE**: Necessary software packages, e.g. Python 3, are installed automatically at the beginning during role execution!
+
+Python 3 library [`RPi.GPIO`](https://pypi.org/project/RPi.GPIO/) is required by this Ansible role.
+
+| OS                             | Install Instructions           |
+| ------------------------------ | ------------------------------ |
+| Ubuntu 20.04 LTS (Focal Fossa) | `apt install python3-rpi.gpio` |
+
 ## Variables
 
 None
