@@ -17,7 +17,7 @@
 
 - name: Copy power button script
   copy:
-    src: "{{ distribution_codename }}/usr/local/bin/rpi-power-button.py"
+    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/bin/rpi-power-button.py"
     dest: /usr/local/bin/rpi-power-button.py
     owner: root
     group: root
@@ -25,7 +25,7 @@
 
 - name: Copy power button service
   copy:
-    src: "{{ distribution_codename }}/etc/systemd/system/rpi-power-button.service"
+    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/etc/systemd/system/rpi-power-button.service"
     dest: /etc/systemd/system/rpi-power-button.service
     owner: root
     group: root

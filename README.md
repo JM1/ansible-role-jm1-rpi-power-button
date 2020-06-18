@@ -39,7 +39,6 @@ None
 
 | Name              | Description                                                                                                                    |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `jm1.common`      | Sets common facts and variables, e.g. `distribution_codename`                                                                  |
 | `jm1.virtual_pkg` | Installs necessary software using [virtual packages](https://www.debian.org/doc/manuals/debian-faq/pkg-basics.en.html#virtual) |
 
 ## Example Playbook
