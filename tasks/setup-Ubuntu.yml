@@ -1,19 +1,16 @@
 ---
-- name: Set apt_packages variable to default value
-  set_fact:
-    apt_packages: "{{ __apt_packages|list }}"
-  when: apt_packages|default(None) == None
-
 - name: Install package dependencies
   include_role:
     name: jm1.virtual_pkg
   vars:
     package_name: "jm1-rpi-power-button"
-    package_depends: "{{ apt_packages }}"
+    package_depends:
+    - python3
+    - python3-rpi.gpio
 
 - name: Copy power button script
   copy:
-    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/bin/rpi-power-button.py"
+    src: "{{ distribution_id|join('-') }}/usr/local/bin/rpi-power-button.py"
     dest: /usr/local/bin/rpi-power-button.py
     owner: root
     group: root
@@ -21,7 +18,7 @@
 
 - name: Copy power button service
   copy:
-    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/etc/systemd/system/rpi-power-button.service"
+    src: "{{ distribution_id|join('-') }}/etc/systemd/system/rpi-power-button.service"
     dest: /etc/systemd/system/rpi-power-button.service
     owner: root
     group: root
@@ -36,7 +33,3 @@
     masked: no
     state: restarted
   when: copy_result.changed == True
-
-- name: Cleanup role variables
-  set_fact:
-    apt_packages: !!null
