@@ -1,4 +1,4 @@
-# Ansible Role: jm1.rpi_power_button
+# Ansible Role `jm1.rpi_power_button`
 
 This role helps to setup a power button on Raspberry Pi.
 
@@ -33,7 +33,7 @@ Python 3 library [`RPi.GPIO`](https://pypi.org/project/RPi.GPIO/) is required by
 
 ## Variables
 
-None
+None.
 
 ## Dependencies
 
@@ -55,7 +55,9 @@ For instructions on how to run Ansible playbooks have look at Ansible's
 
 ## License
 
-GPL3
+GNU General Public License v3.0 or later
+
+See [LICENCE.md](LICENSE.md) to see the full text.
 
 ## Author
 
