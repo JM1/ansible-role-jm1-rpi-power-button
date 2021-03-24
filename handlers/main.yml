@@ -1,0 +1,8 @@
+---
+- name: Enable and start power button service and ensure it is not masked
+  systemd:
+    name: rpi-power-button.service
+    daemon_reload: yes
+    enabled: yes
+    masked: no
+    state: restarted
