@@ -37,17 +37,16 @@ None.
 
 ## Dependencies
 
-| Name              | Description                                                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `jm1.virtual_pkg` | Installs necessary software using [virtual packages](https://www.debian.org/doc/manuals/debian-faq/pkg-basics.en.html#virtual) |
+None.
 
 ## Example Playbook
 
-```
+```yml
 - hosts: all
-  tasks:
-    - import_role:
-        name: jm1.rpi_power_button
+  roles:
+  - name: Setup a power button on Raspberry Pi
+    role: jm1.rpi_power_button
+    tags: ["jm1.rpi_power_button"]
 ```
 
 For instructions on how to run Ansible playbooks have look at Ansible's
